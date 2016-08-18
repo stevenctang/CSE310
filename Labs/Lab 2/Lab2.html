@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+        <title>CSE 310 Lab 2 Report </title>
+    <h4>
+        Steven Tang <br>
+        CSE 310 Summer 2016 <br>
+        June 30, 2016
+    </h4>
+    <center><h1> Lab 2 Report </h1></center>
+    <body>
+        <h1> vdp.v </h1>
+        <xmp>
+            primitive UDP_02467 (D, A, B, C);
+                output D;
+                input A, B, C;
+            //Truth table for for D 5 F (A,B,C) 5 Summation(0,2,4,6,7);
+                table
+            // A B C : D // Column Header Comment
+               0 0 0 : 1;
+               0 0 1 : 0;
+               0 1 0 : 1;
+               0 1 1 : 0;
+               1 0 0 : 1;
+               1 0 1 : 0;
+               1 1 0 : 1;
+               1 1 1 : 1;
+                endtable
+            endprimitive
+
+            module Circuit_with_UDP_02467 ( e, f, a, b, c, d);
+                output e,f;
+                input a, b, c, d;
+                UDP_02467 (e, a, b, c);
+                and (f, e, d);
+            endmodule
+
+            <-- I put the test bench inside of the file at the end -->
+
+            module udp_test();
+                reg a, b, c;
+                wire d;
+
+                initial begin
+                    $display ("time\t a b c | d");
+                    $monitor ("%g\t %b %b %b | %b", $time, a,b,c, d);
+
+                    a = 0;
+                    b = 0;
+                    c = 0;
+                    #35 $finish;
+                end
+
+                    always begin
+                    #5 c = ~c;
+                    end
+                    always begin
+                    #10 b = ~b;
+                    end
+                    always begin
+                    #20 c = ~c;
+                    end
+
+            UDP_02467 the_udp(d,a,b,c);
+            endmodule
+
+
+
+        </xmp>
+        <h2> Output of vdp.v: </h2>
+        <xmp>
+            time    a b c | d
+            0	    0 0 0 | 1
+            5	    0 0 1 | 0
+            10	    0 1 0 | 1
+            15	    0 1 1 | 0
+            20	    0 0 1 | 0
+            25	    0 0 0 | 1
+            30	    0 1 1 | 0
+            35	    0 1 0 | 1
+        </xmp>
+        <h2> Analysis.v</h2>
+        <xmp>
+            module Circuit_of_Fig_4_2 (A,B,C,F1,F2);
+                input A, B, C;
+                output F1, F2;
+                wire T1, T2, T3, F2_b, E1, E2, E3;
+                or g1(T1,A,B,C);
+                and g2 (T2, A, B, C);
+                and g3 (E1, A, B);
+                and g4 (E2, A, C);
+                and g5 (E3, B, C);
+                or g6 (F2, E1, E2, E3);
+                not g7 (F2_b, F2);
+                and g8 (T3, T1, F2_b);
+                or g9 (F1, T2, T3);
+            endmodule
+        </xmp>
+        <p>
+            We did demonstrate our circuit to Professor Yu and he said it was correct when he was using the meter to measure the voltages.<br><br>
+            <b> 3. </b>The reason why the circuit adds is because they're in series and they're logic gates. They're not in parallel so they would add directly across.
+        </p>
+        <h2> Lab Report </h2>
+            This lab was very challenging because I have never worked with Iverilog before as well with chips. Although it was difficult, I felt like my group obtained the right answer but did not have time to test it out. So at the end, we did complete most of the lab but are unsure of the outcome, whether we got it correct or not. Also, I felt like I learned many new things about circuits because it was my first time working with chips and circuits together. It was actually pretty fun to do when we figured it out. So at the end, I believe I completed maybe 90% of the lab.
+        <p>
+
+        </p>
+    </body>
+</html>

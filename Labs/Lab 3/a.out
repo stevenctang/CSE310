@@ -1,0 +1,203 @@
+#! /usr/local/Cellar/icarus-verilog/0.9.7/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision - 12;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x7ffeb0413ea0 .scope module, "verilog_TB" "verilog_TB" 2 31;
+ .timescale -9 -12;
+v0x7ffeb0613880_0 .var "A", 3 0;
+v0x7ffeb0613900_0 .var "B", 3 0;
+v0x7ffeb0613980_0 .net "Carry", 0 0, L_0x7ffeb0615280; 1 drivers
+RS_0x1067b95d8 .resolv tri, L_0x7ffeb0613ff0, L_0x7ffeb0614620, L_0x7ffeb0614c30, L_0x7ffeb06152e0;
+v0x7ffeb0613a60_0 .net8 "Sum", 3 0, RS_0x1067b95d8; 4 drivers
+v0x7ffeb0613ae0_0 .var "c", 0 0;
+S_0x7ffeb0600140 .scope module, "rca" "ripple_carry_4_bit_adder" 2 91, 2 16, S_0x7ffeb0413ea0;
+ .timescale -9 -12;
+v0x7ffeb06133b0_0 .net "A", 3 0, v0x7ffeb0613880_0; 1 drivers
+v0x7ffeb0613430_0 .net "B", 3 0, v0x7ffeb0613900_0; 1 drivers
+v0x7ffeb06134b0_0 .net "C0", 0 0, v0x7ffeb0613ae0_0; 1 drivers
+v0x7ffeb0613590_0 .net "C1", 0 0, L_0x7ffeb0613f10; 1 drivers
+v0x7ffeb0613610_0 .net "C2", 0 0, L_0x7ffeb0614540; 1 drivers
+v0x7ffeb06136c0_0 .net "C3", 0 0, L_0x7ffeb0614b50; 1 drivers
+v0x7ffeb0613740_0 .alias "C4", 0 0, v0x7ffeb0613980_0;
+v0x7ffeb0613800_0 .alias "Sum", 3 0, v0x7ffeb0613a60_0;
+L_0x7ffeb0613ff0 .part/pv L_0x7ffeb0613d10, 0, 1, 4;
+L_0x7ffeb0614080 .part v0x7ffeb0613880_0, 0, 1;
+L_0x7ffeb0614190 .part v0x7ffeb0613900_0, 0, 1;
+L_0x7ffeb0614620 .part/pv L_0x7ffeb06143c0, 1, 1, 4;
+L_0x7ffeb06146b0 .part v0x7ffeb0613880_0, 1, 1;
+L_0x7ffeb06147c0 .part v0x7ffeb0613900_0, 1, 1;
+L_0x7ffeb0614c30 .part/pv L_0x7ffeb06149d0, 2, 1, 4;
+L_0x7ffeb0614d40 .part v0x7ffeb0613880_0, 2, 1;
+L_0x7ffeb0614ed0 .part v0x7ffeb0613900_0, 2, 1;
+L_0x7ffeb06152e0 .part/pv L_0x7ffeb0615100, 3, 1, 4;
+L_0x7ffeb0615370 .part v0x7ffeb0613880_0, 3, 1;
+L_0x7ffeb0615480 .part v0x7ffeb0613900_0, 3, 1;
+S_0x7ffeb0612760 .scope module, "FA0" "full_adder" 2 19, 2 9, S_0x7ffeb0600140;
+ .timescale -9 -12;
+L_0x7ffeb0613f10 .functor OR 1, L_0x7ffeb0613eb0, L_0x7ffeb0613c70, C4<0>, C4<0>;
+v0x7ffeb0612e60_0 .alias "C", 0 0, v0x7ffeb0613590_0;
+v0x7ffeb0612f20_0 .net "C1", 0 0, L_0x7ffeb0613c70; 1 drivers
+v0x7ffeb0612fa0_0 .net "C2", 0 0, L_0x7ffeb0613eb0; 1 drivers
+v0x7ffeb0613060_0 .net "S", 0 0, L_0x7ffeb0613d10; 1 drivers
+v0x7ffeb0613100_0 .net "S1", 0 0, L_0x7ffeb0613b90; 1 drivers
+v0x7ffeb06131f0_0 .net "x", 0 0, L_0x7ffeb0614080; 1 drivers
+v0x7ffeb0613270_0 .net "y", 0 0, L_0x7ffeb0614190; 1 drivers
+v0x7ffeb0613330_0 .alias "z", 0 0, v0x7ffeb06134b0_0;
+S_0x7ffeb0612b40 .scope module, "HA1" "half_adder" 2 11, 2 3, S_0x7ffeb0612760;
+ .timescale -9 -12;
+L_0x7ffeb0613b90 .functor XOR 1, L_0x7ffeb0614080, L_0x7ffeb0614190, C4<0>, C4<0>;
+L_0x7ffeb0613c70 .functor AND 1, L_0x7ffeb0614080, L_0x7ffeb0614190, C4<1>, C4<1>;
+v0x7ffeb0612c20_0 .alias "C", 0 0, v0x7ffeb0612f20_0;
+v0x7ffeb0612ca0_0 .alias "S", 0 0, v0x7ffeb0613100_0;
+v0x7ffeb0612d40_0 .alias "x", 0 0, v0x7ffeb06131f0_0;
+v0x7ffeb0612de0_0 .alias "y", 0 0, v0x7ffeb0613270_0;
+S_0x7ffeb0612840 .scope module, "HA2" "half_adder" 2 12, 2 3, S_0x7ffeb0612760;
+ .timescale -9 -12;
+L_0x7ffeb0613d10 .functor XOR 1, L_0x7ffeb0613b90, v0x7ffeb0613ae0_0, C4<0>, C4<0>;
+L_0x7ffeb0613eb0 .functor AND 1, L_0x7ffeb0613b90, v0x7ffeb0613ae0_0, C4<1>, C4<1>;
+v0x7ffeb0612920_0 .alias "C", 0 0, v0x7ffeb0612fa0_0;
+v0x7ffeb06129a0_0 .alias "S", 0 0, v0x7ffeb0613060_0;
+v0x7ffeb0612a20_0 .alias "x", 0 0, v0x7ffeb0613100_0;
+v0x7ffeb0612ac0_0 .alias "y", 0 0, v0x7ffeb06134b0_0;
+S_0x7ffeb0611b10 .scope module, "FA1" "full_adder" 2 20, 2 9, S_0x7ffeb0600140;
+ .timescale -9 -12;
+L_0x7ffeb0614540 .functor OR 1, L_0x7ffeb06144e0, L_0x7ffeb0614320, C4<0>, C4<0>;
+v0x7ffeb0612210_0 .alias "C", 0 0, v0x7ffeb0613610_0;
+v0x7ffeb06122d0_0 .net "C1", 0 0, L_0x7ffeb0614320; 1 drivers
+v0x7ffeb0612350_0 .net "C2", 0 0, L_0x7ffeb06144e0; 1 drivers
+v0x7ffeb0612410_0 .net "S", 0 0, L_0x7ffeb06143c0; 1 drivers
+v0x7ffeb06124b0_0 .net "S1", 0 0, L_0x7ffeb0613180; 1 drivers
+v0x7ffeb06125a0_0 .net "x", 0 0, L_0x7ffeb06146b0; 1 drivers
+v0x7ffeb0612620_0 .net "y", 0 0, L_0x7ffeb06147c0; 1 drivers
+v0x7ffeb06126e0_0 .alias "z", 0 0, v0x7ffeb0613590_0;
+S_0x7ffeb0611ef0 .scope module, "HA1" "half_adder" 2 11, 2 3, S_0x7ffeb0611b10;
+ .timescale -9 -12;
+L_0x7ffeb0613180 .functor XOR 1, L_0x7ffeb06146b0, L_0x7ffeb06147c0, C4<0>, C4<0>;
+L_0x7ffeb0614320 .functor AND 1, L_0x7ffeb06146b0, L_0x7ffeb06147c0, C4<1>, C4<1>;
+v0x7ffeb0611fd0_0 .alias "C", 0 0, v0x7ffeb06122d0_0;
+v0x7ffeb0612050_0 .alias "S", 0 0, v0x7ffeb06124b0_0;
+v0x7ffeb06120f0_0 .alias "x", 0 0, v0x7ffeb06125a0_0;
+v0x7ffeb0612190_0 .alias "y", 0 0, v0x7ffeb0612620_0;
+S_0x7ffeb0611bf0 .scope module, "HA2" "half_adder" 2 12, 2 3, S_0x7ffeb0611b10;
+ .timescale -9 -12;
+L_0x7ffeb06143c0 .functor XOR 1, L_0x7ffeb0613180, L_0x7ffeb0613f10, C4<0>, C4<0>;
+L_0x7ffeb06144e0 .functor AND 1, L_0x7ffeb0613180, L_0x7ffeb0613f10, C4<1>, C4<1>;
+v0x7ffeb0611cd0_0 .alias "C", 0 0, v0x7ffeb0612350_0;
+v0x7ffeb0611d50_0 .alias "S", 0 0, v0x7ffeb0612410_0;
+v0x7ffeb0611dd0_0 .alias "x", 0 0, v0x7ffeb06124b0_0;
+v0x7ffeb0611e70_0 .alias "y", 0 0, v0x7ffeb0613590_0;
+S_0x7ffeb0610ed0 .scope module, "FA2" "full_adder" 2 21, 2 9, S_0x7ffeb0600140;
+ .timescale -9 -12;
+L_0x7ffeb0614b50 .functor OR 1, L_0x7ffeb0614af0, L_0x7ffeb0614930, C4<0>, C4<0>;
+v0x7ffeb06115b0_0 .alias "C", 0 0, v0x7ffeb06136c0_0;
+v0x7ffeb0611680_0 .net "C1", 0 0, L_0x7ffeb0614930; 1 drivers
+v0x7ffeb0611700_0 .net "C2", 0 0, L_0x7ffeb0614af0; 1 drivers
+v0x7ffeb06117c0_0 .net "S", 0 0, L_0x7ffeb06149d0; 1 drivers
+v0x7ffeb0611860_0 .net "S1", 0 0, L_0x7ffeb06148d0; 1 drivers
+v0x7ffeb0611950_0 .net "x", 0 0, L_0x7ffeb0614d40; 1 drivers
+v0x7ffeb06119d0_0 .net "y", 0 0, L_0x7ffeb0614ed0; 1 drivers
+v0x7ffeb0611a90_0 .alias "z", 0 0, v0x7ffeb0613610_0;
+S_0x7ffeb0611290 .scope module, "HA1" "half_adder" 2 11, 2 3, S_0x7ffeb0610ed0;
+ .timescale -9 -12;
+L_0x7ffeb06148d0 .functor XOR 1, L_0x7ffeb0614d40, L_0x7ffeb0614ed0, C4<0>, C4<0>;
+L_0x7ffeb0614930 .functor AND 1, L_0x7ffeb0614d40, L_0x7ffeb0614ed0, C4<1>, C4<1>;
+v0x7ffeb0611370_0 .alias "C", 0 0, v0x7ffeb0611680_0;
+v0x7ffeb06113f0_0 .alias "S", 0 0, v0x7ffeb0611860_0;
+v0x7ffeb0611490_0 .alias "x", 0 0, v0x7ffeb0611950_0;
+v0x7ffeb0611530_0 .alias "y", 0 0, v0x7ffeb06119d0_0;
+S_0x7ffeb0610fb0 .scope module, "HA2" "half_adder" 2 12, 2 3, S_0x7ffeb0610ed0;
+ .timescale -9 -12;
+L_0x7ffeb06149d0 .functor XOR 1, L_0x7ffeb06148d0, L_0x7ffeb0614540, C4<0>, C4<0>;
+L_0x7ffeb0614af0 .functor AND 1, L_0x7ffeb06148d0, L_0x7ffeb0614540, C4<1>, C4<1>;
+v0x7ffeb0611090_0 .alias "C", 0 0, v0x7ffeb0611700_0;
+v0x7ffeb0611110_0 .alias "S", 0 0, v0x7ffeb06117c0_0;
+v0x7ffeb0611190_0 .alias "x", 0 0, v0x7ffeb0611860_0;
+v0x7ffeb0611210_0 .alias "y", 0 0, v0x7ffeb0613610_0;
+S_0x7ffeb0600220 .scope module, "FA3" "full_adder" 2 22, 2 9, S_0x7ffeb0600140;
+ .timescale -9 -12;
+L_0x7ffeb0615280 .functor OR 1, L_0x7ffeb0615220, L_0x7ffeb0615060, C4<0>, C4<0>;
+v0x7ffeb0610980_0 .alias "C", 0 0, v0x7ffeb0613980_0;
+v0x7ffeb0610a20_0 .net "C1", 0 0, L_0x7ffeb0615060; 1 drivers
+v0x7ffeb0610ac0_0 .net "C2", 0 0, L_0x7ffeb0615220; 1 drivers
+v0x7ffeb0610b80_0 .net "S", 0 0, L_0x7ffeb0615100; 1 drivers
+v0x7ffeb0610c20_0 .net "S1", 0 0, L_0x7ffeb0613bf0; 1 drivers
+v0x7ffeb0610d10_0 .net "x", 0 0, L_0x7ffeb0615370; 1 drivers
+v0x7ffeb0610d90_0 .net "y", 0 0, L_0x7ffeb0615480; 1 drivers
+v0x7ffeb0610e50_0 .alias "z", 0 0, v0x7ffeb06136c0_0;
+S_0x7ffeb0610640 .scope module, "HA1" "half_adder" 2 11, 2 3, S_0x7ffeb0600220;
+ .timescale -9 -12;
+L_0x7ffeb0613bf0 .functor XOR 1, L_0x7ffeb0615370, L_0x7ffeb0615480, C4<0>, C4<0>;
+L_0x7ffeb0615060 .functor AND 1, L_0x7ffeb0615370, L_0x7ffeb0615480, C4<1>, C4<1>;
+v0x7ffeb0610720_0 .alias "C", 0 0, v0x7ffeb0610a20_0;
+v0x7ffeb06107c0_0 .alias "S", 0 0, v0x7ffeb0610c20_0;
+v0x7ffeb0610860_0 .alias "x", 0 0, v0x7ffeb0610d10_0;
+v0x7ffeb0610900_0 .alias "y", 0 0, v0x7ffeb0610d90_0;
+S_0x7ffeb0600300 .scope module, "HA2" "half_adder" 2 12, 2 3, S_0x7ffeb0600220;
+ .timescale -9 -12;
+L_0x7ffeb0615100 .functor XOR 1, L_0x7ffeb0613bf0, L_0x7ffeb0614b50, C4<0>, C4<0>;
+L_0x7ffeb0615220 .functor AND 1, L_0x7ffeb0613bf0, L_0x7ffeb0614b50, C4<1>, C4<1>;
+v0x7ffeb06003e0_0 .alias "C", 0 0, v0x7ffeb0610ac0_0;
+v0x7ffeb0610480_0 .alias "S", 0 0, v0x7ffeb0610b80_0;
+v0x7ffeb0610510_0 .alias "x", 0 0, v0x7ffeb0610c20_0;
+v0x7ffeb06105b0_0 .alias "y", 0 0, v0x7ffeb06136c0_0;
+    .scope S_0x7ffeb0413ea0;
+T_0 ;
+    %vpi_call 2 38 "$display", "time\011 A0 A1 A2 A3 | B0 B1 B2 B3 | c | Cout | S";
+    %vpi_call 2 39 "$display", "---------------------+-------------+-----+------+-----";
+    %vpi_call 2 40 "$monitor", "%g\011 %b  %b  %b  %b  | %b  %b  %b  %b  |  %b  |  %b   | %b", $time, &PV<v0x7ffeb0613880_0, 3, 1>, &PV<v0x7ffeb0613880_0, 2, 1>, &PV<v0x7ffeb0613880_0, 1, 1>, &PV<v0x7ffeb0613880_0, 0, 1>, &PV<v0x7ffeb0613900_0, 3, 1>, &PV<v0x7ffeb0613900_0, 2, 1>, &PV<v0x7ffeb0613900_0, 1, 1>, &PV<v0x7ffeb0613900_0, 0, 1>, v0x7ffeb0613ae0_0, v0x7ffeb0613980_0, v0x7ffeb0613a60_0;
+    %set/v v0x7ffeb0613880_0, 0, 4;
+    %set/v v0x7ffeb0613900_0, 0, 4;
+    %set/v v0x7ffeb0613ae0_0, 0, 1;
+    %delay 2560000, 0;
+    %vpi_call 2 47 "$finish";
+    %end;
+    .thread T_0;
+    .scope S_0x7ffeb0413ea0;
+T_1 ;
+    %movi 8, 255, 9;
+T_1.0 %cmp/s 0, 8, 9;
+    %jmp/0xz T_1.1, 5;
+    %add 8, 1, 9;
+    %delay 10000, 0;
+    %ix/load 0, 1, 0;
+    %load/vp0 17, v0x7ffeb0613900_0, 4;
+    %set/v v0x7ffeb0613900_0, 17, 4;
+    %jmp T_1.0;
+T_1.1 ;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_0x7ffeb0413ea0;
+T_2 ;
+    %movi 8, 16, 6;
+T_2.0 %cmp/s 0, 8, 6;
+    %jmp/0xz T_2.1, 5;
+    %add 8, 1, 6;
+    %delay 160000, 0;
+    %ix/load 0, 1, 0;
+    %load/vp0 14, v0x7ffeb0613880_0, 4;
+    %set/v v0x7ffeb0613880_0, 14, 4;
+    %jmp T_2.0;
+T_2.1 ;
+    %jmp T_2;
+    .thread T_2;
+    .scope S_0x7ffeb0413ea0;
+T_3 ;
+    %movi 8, 2, 3;
+T_3.0 %cmp/s 0, 8, 3;
+    %jmp/0xz T_3.1, 5;
+    %add 8, 1, 3;
+    %delay 2560000, 0;
+    %load/v 11, v0x7ffeb0613ae0_0, 1;
+    %inv 11, 1;
+    %set/v v0x7ffeb0613ae0_0, 11, 1;
+    %jmp T_3.0;
+T_3.1 ;
+    %jmp T_3;
+    .thread T_3;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "verilogexample.v";

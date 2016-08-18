@@ -1,0 +1,45 @@
+<xmp>
+    Full-Adder:
+//start of module
+module fullAdder (a, b, c, C, S);
+output C, S;
+input a, b, c;
+wire w1, w2, w3, w4, w5;
+//half adder
+xor G1(w1, a, b);
+and G2(w2, a, b);
+and G3(w3, a, c);
+and G4(w4, b, c);
+or G5(w5, w2, w3);
+//Carry
+or G6(C, w4, w5);
+//Sum
+xor G7(S, w1, c);
+endmodule
+//test bench fo full-adder
+`include "fulladder.v"
+module tb_fullAdder ();
+ //declare inputs as registers and outputs as wires
+reg a,b,c;
+wire C,S;
+ initial begin
+$display ("time\t a b c | C S");
+$monitor ("%g\t %b %b %b | %b %b", $time, a, b, c, C, S);
+a = 0; //initial value
+b = 0;
+c = 0;
+#35 $finish;
+ end
+ always begin
+#5 c = ~c;
+ end
+ always begin
+#10 b = ~b;
+ end
+
+ always begin
+#20 a = ~a;
+ end
+fullAdder test (a, b, c, C, S);
+endmodule
+</xmp>

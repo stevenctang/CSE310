@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+        <title>CSE 310 Lab 9 Report </title>
+    <h4>
+        Steven Tang <br>
+        CSE 310 Summer 2016 <br>
+        July 26, 2016
+    </h4>
+    <center><h1> Lab 9 Report: Mini Machine Organization </h1></center>
+    <body>
+        <h3> Code needed from the previous lab </h3>
+        <xmp>
+module Register_File(data_out,data_in,read_add,read_en,write_add,write_en);
+    input  [3:0] data_in;            // data to write
+    input  [1:0] read_add,write_add; // read address and write address
+    input        read_en,write_en;   // read and write enable
+    output [3:0] data_out;           // data to read
+
+    wire   [3:0] read_sel,write_sel;
+
+    //instantiate registers here
+    decoder_df Dec_Read(read_sel,read_en,read_add);
+    decoder_df Dec_Write(write_sel,write_en,write_add);
+
+
+    Nibble_Reg Reg_0(data_out,data_in,write_sel[0],read_sel[0]);
+    Nibble_Reg Reg_1(data_out,data_in,write_sel[1],read_sel[1]);
+    Nibble_Reg Reg_2(data_out,data_in,write_sel[2],read_sel[2]);
+    Nibble_Reg Reg_3(data_out,data_in,write_sel[3],read_sel[3]);
+
+    input [3:0] data_in;
+    input       load,out_en;
+    output [3:0] data_out;
+
+endmodule
+
+
+
+module Nibble_Reg(data_out,data_in,load,out_en);
+    input  [3:0] data_in;
+    input        load,out_en;
+    output [3:0] data_out;
+
+    // wires between flip-flops and tri-state gates
+    wire   [3:0] dff_out;
+
+    // instantiate tri-state gates to do output enable
+    bufif0 tri3(data_out[3],dff_out[3],out_en);
+    bufif0 tri2(data_out[2],dff_out[2],out_en);
+    bufif0 tri11(data_out[1],dff_out[1],out_en); // tri1 is a gate type
+    bufif0 tri00(data_out[0],dff_out[0],out_en); // tri0 is a gate type
+
+
+
+    D_FF Reg_Bit_3(dff_out[3],data_in[3],load);
+    D_FF Reg_Bit_2(dff_out[2],data_in[2],load);
+    D_FF Reg_Bit_1(dff_out[1],data_in[1],load);
+    D_FF Reg_Bit_0(dff_out[0],data_in[0],load);
+
+
+endmodule
+        </xmp>
+        <p>
+            1) Make sure the counter starts counting from $000_2$, how?<br>
+            Well basically we would just have make sure our clock starts at 0. Once we're done with 0, our clock should move on to the next number.<br><br>
+            2) Make sure the counter does not count beyond $7=111_2$ because it would cause ACC to add content of the register file more than once. How do you accomplish this?<br>
+            How we would make sure our counter does not count beyond 7 is by modifying our clock.
+        </p>
+        <h2> Lab Report </h2>
+            <p>
+                As we were doing the last lab, we had to complete the previous lab in order to do this lab. We ended up completing the previous lab which were programming the pld, Building the Add/Sub, and building the rest of the circuits that were needed. <br>
+                The only thing that was not on our side, again, was time. There was so much to do and we couldn't really ask for help because Professor. Qiao was helping out HC with their presentations and grading. We didn't finish this lab to the fullest because of the time. Even so, we were able to see an example from another group that helped us visualize what the experiment outcome was supposed to output. <br>
+                So at the end, I believe that our group should be given an 19 out of 20 because of all the work that we put in. We were close to finishing the final circuit, and we worked really hard to try to finish it.
+            <p>
+	</body>
+</html>

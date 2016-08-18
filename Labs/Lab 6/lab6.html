@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+        <title>CSE 310 Lab 6 Report </title>
+    <h4>
+        Steven Tang <br>
+        CSE 310 Summer 2016 <br>
+        July 14, 2016
+    </h4>
+    <center><h1> Lab 6 Report </h1></center>
+    <body>
+        <h1> Code </h1>
+
+        <xmp>
+            module two_to_four_dec;
+                input a,
+            	  b,
+              	  en;
+                output
+            	  [3:0] F;
+                wire en1 = ~en;
+                assign F[0] = ~(~A & ~B & en1);
+                assign F[1] = ~(A & ~B & en1);
+                assign F[2] = ~(~A & B & en1);
+                assign F[3] = ~(A & B & en1);
+            endmodule
+
+            module two_to_four_dec_TB;
+                reg a,b,en;
+                wire [3:0] F;
+            two_to_four_dec testing (a,b,en,out);
+
+                initial begin
+                    $display("Enable a b | F[0] F[1] F[2] F[3]");
+                    $monitor("%b   %b   %b  | %b  %b  %b  %b",en,a,b,F[0],F[1],F[2],F[3]);
+            en = 0;
+            a = 0;
+            b = 0;
+
+            #9 $finish;
+            end
+
+            always #5  a = ~a;
+
+            always #10  b = ~b;
+
+            always #20  en = ~en;
+
+            endmodule
+
+        </xmp>
+
+        <h2> Lab Report </h2>
+        <p>
+			This lab was pretty difficult in my opinion because my group and I were stuck on how we were going to implement the decoder chip along with the circuit board that we have already built in the previous lab. I have never worked with a decoder chip before so I didn't really know how to complete the lab without looking at some resources online.<br>
+            After looking at many different resources online, my group completed the circuit and presented it to the professor. After looking at our circuit, he approved of our work. At the end, we finished the lab 100%
+    	</p>
+	</body>
+</html>

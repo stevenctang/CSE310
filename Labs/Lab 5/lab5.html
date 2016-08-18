@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+        <title>CSE 310 Lab 5 Report </title>
+    <h4>
+        Steven Tang <br>
+        CSE 310 Summer 2016 <br>
+        July 12, 2016
+    </h4>
+    <center><h1> Lab 5 Report </h1></center>
+    <body>
+        <h1> Code </h1>
+
+        <xmp>
+            PARTNO       PLD01;
+            NAME         CODECONV;
+            DATE         07-12-2016;
+            REV          01;
+            DESIGNER     Steven Tang;
+            COMPANY      CSUSB;
+            DEVICE       G16V8A;
+            ASSEMBLY     BREADBOARD;
+            LOCATION     JBH-356;
+            /* INPUTS */
+            PIN 1 = W;
+            PIN 2 = X;
+            PIN 3 = Y;
+            PIN 4 = Z;
+            /* OUTPUTS */
+            PIN 12 = a;
+            PIN 13 = b;
+            PIN 14 = c;
+            PIN 15 = d;
+            PIN 16 = e;
+            PIN 17 = f;
+            PIN 18 = g;
+            /* BOOLEAN FUNCTIONS */
+            a = Y # !X&!Z # X&Z # W;
+            b = !Y&!Z # Y&Z # !X;
+            c = !W&X # !Y # !Z;
+            d = Y&!Z # !X&!Z # X&!Y&Z # !X&Y;
+            e = Y&!Z # !X&!Z;
+            f = !Y&!Z # X&!Z # X&!Y # W;
+            g = !X&Y # X&!Z # X&!Y # W;
+        </xmp>
+
+        </xmp>
+
+</xmp>
+        <h2> Lab Report </h2>
+        <p>
+            This was the first time that I have ever worked with a LED decoder and programming a logic device. This was also the first time that we worked with a bread board that had switched because we would always have a board that didn't have switches so it was prett neat that we got to experience things with other bread boards. It was a good experience when we were building the circuit in order to make our LED come out to the numbers or letters that we wanted it to become. Now I know how some leds work in the real world. This lab was definitely easier than the other labs because of the different bread board we had. If we used the bread board without any switches, we would have needed to connect different wires to make our own switches which were very difficult to do in the last lab. We ended up completing all of the things needed.
+
+        </p>
+    </body>
+</html>

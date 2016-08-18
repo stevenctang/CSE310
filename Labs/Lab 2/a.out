@@ -1,0 +1,72 @@
+#! /usr/local/Cellar/icarus-verilog/0.9.7/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x7fcd005019e0 .scope module, "Circuit_with_UDP_02467" "Circuit_with_UDP_02467" 2 46;
+ .timescale 0 0;
+UDP_UDP_02467 .udp/comb "UDP_02467", 3
+ ,"0001"
+ ,"0010"
+ ,"0101"
+ ,"0110"
+ ,"1001"
+ ,"1010"
+ ,"1101"
+ ,"1111";
+L_0x7fcd00512090 .udp UDP_UDP_02467, C4<z>, C4<z>, C4<z>;
+L_0x7fcd00512230 .functor AND 1, L_0x7fcd00512090, C4<z>, C4<1>, C4<1>;
+v0x7fcd00501ba0_0 .net "a", 0 0, C4<z>; 0 drivers
+v0x7fcd00511b60_0 .net "b", 0 0, C4<z>; 0 drivers
+v0x7fcd00511bf0_0 .net "c", 0 0, C4<z>; 0 drivers
+v0x7fcd00511c70_0 .net "d", 0 0, C4<z>; 0 drivers
+v0x7fcd00511d00_0 .net "e", 0 0, L_0x7fcd00512090; 1 drivers
+v0x7fcd00511dc0_0 .net "f", 0 0, L_0x7fcd00512230; 1 drivers
+S_0x7fcd00501ac0 .scope module, "udp_test" "udp_test" 2 18;
+ .timescale 0 0;
+L_0x7fcd00512310 .udp UDP_UDP_02467, v0x7fcd00511e50_0, v0x7fcd00511ef0_0, v0x7fcd00511f80_0;
+v0x7fcd00511e50_0 .var "a", 0 0;
+v0x7fcd00511ef0_0 .var "b", 0 0;
+v0x7fcd00511f80_0 .var "c", 0 0;
+v0x7fcd00512000_0 .net "d", 0 0, L_0x7fcd00512310; 1 drivers
+    .scope S_0x7fcd00501ac0;
+T_0 ;
+    %vpi_call 2 23 "$display", "time\011 a b c | d";
+    %vpi_call 2 24 "$monitor", "%g\011 %b %b %b | %b", $time, v0x7fcd00511e50_0, v0x7fcd00511ef0_0, v0x7fcd00511f80_0, v0x7fcd00512000_0;
+    %set/v v0x7fcd00511e50_0, 0, 1;
+    %set/v v0x7fcd00511ef0_0, 0, 1;
+    %set/v v0x7fcd00511f80_0, 0, 1;
+    %delay 35, 0;
+    %vpi_call 2 29 "$finish";
+    %end;
+    .thread T_0;
+    .scope S_0x7fcd00501ac0;
+T_1 ;
+    %delay 5, 0;
+    %load/v 8, v0x7fcd00511f80_0, 1;
+    %inv 8, 1;
+    %set/v v0x7fcd00511f80_0, 8, 1;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_0x7fcd00501ac0;
+T_2 ;
+    %delay 10, 0;
+    %load/v 8, v0x7fcd00511ef0_0, 1;
+    %inv 8, 1;
+    %set/v v0x7fcd00511ef0_0, 8, 1;
+    %jmp T_2;
+    .thread T_2;
+    .scope S_0x7fcd00501ac0;
+T_3 ;
+    %delay 20, 0;
+    %load/v 8, v0x7fcd00511f80_0, 1;
+    %inv 8, 1;
+    %set/v v0x7fcd00511f80_0, 8, 1;
+    %jmp T_3;
+    .thread T_3;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "udp.v";
